@@ -1,5 +1,3 @@
-require "process"
-
 public_dir = "public"
 source_dir = "source"
 deploy_dir = "_deploy"
@@ -17,10 +15,12 @@ task :install do
 	begin
 		require "jekyll"
 		require "redcarpet"
+		require "launchy"
 		abort("Already installed all blog dependencies! run \"rake deploy\" if you have not already")
 	rescue LoadError
 		system "gem install jekyll"
 		system "gem install redcarpet"
+		system "gem install launchy"
 		system "mkdir public"
 	end
 end
@@ -79,13 +79,16 @@ end
 
 desc ""
 task :preview do 
+	require "launchy"
 	cd "#{deploy_dir}" do
-		jekyllPid = Process.spawn("jekyll serve")
-		trap("INT") {
-			Process.kill(9, jekyllPid) rescue Errno::ESRCH
-			exit 0
-		}
-		Process.wait(jekyllPid)
+		Thread.new do
+			sleep 4
+			puts "Opening preview site in browser..."
+			Launchy.open("http://localhost:4000")
+		end
+		puts "Generating preview site..."
+		system "jekyll serve --watch"
+		rm_rf "_site"
 	end
 end
 
