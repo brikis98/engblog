@@ -18,6 +18,7 @@ task :install do
 	rescue LoadError
 		system "gem install jekyll"
 		system "gem install redcarpet"
+		system "mkdir public"
 	end
 end
 
