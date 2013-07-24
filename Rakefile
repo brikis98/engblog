@@ -9,6 +9,7 @@ stash_dir = "source/_stash"
 git_url = "git@github.com:thinkdeciduous/engblog.git"
 git_branch = "gh-pages"
 git_master = "master"
+git_user = "thinkdeciduous"
 
 desc "Install Jekyll and all it's dependencies."
 task :install do
@@ -34,18 +35,29 @@ task :deploy do
 	cd "#{deploy_dir}" do
 		# this all needs to be changed once I get the LinkedIn repo setup
 		system "git init"
+		system "git config user.name #{git_user}"
+		system "git config user."
 		system "git remote add origin #{git_url}"
 		system "git pull origin"
 		system "git checkout gh-pages"
 	end
 end
 
+desc ""
+task :checkin do
+	if File.exist?(".checkin")
+		abort("rake aborted!") if ask("You have already checked in for this session, would you like to terminate this session?", ['y', 'n']) == 'n'
+		system "rm .checkin"
+	end
+	puts "Checking in at #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+	open(filename, 'w') do |file|
+	   file.puts("#{Time.now.strftime('%Y-%m-%d %H:%M')}")
+  	end
+end
+
 desc "Move all other posts than the one currently being worked on to a temporary stash location so regenerating the site happens much more quickly."
 task :isolate, :filename do |t, args|
-  FileUtils.mkdir("#{source_dir}/#{stash_dir}/") unless File.exist?("#{source_dir}/#{stash_dir}/")
-  Dir.glob("#{source_dir}/#{posts_dir}/*.*") do |post|
-    FileUtils.mv post, "#{source_dir}/#{stash_dir}/" unless post.include?(args.filename)
-  end
+  
 end
 
 desc "Move all stashed posts back into the posts directory, ready for site generation."
@@ -54,7 +66,16 @@ task :integrate do
 end
 
 desc "Generate all static content with Jekyll and commit blog changes to github"
-task :push do
+task :push :override do |t, args|
+	if(args.override == nil)
+		abort("You have not checked in for this session! Please use \"rake checkin\" to check in or \"rake push nocheck\" to commit without checking in") unless File.exist?(".checkin")
+		FileUtils.mkdir("#{source_dir}/#{stash_dir}/") unless File.exist?("#{source_dir}/#{stash_dir}/")
+		ci_time = File.read(".checkin")
+		Dir.glob("#{source_dir}/#{posts_dir}/*.*") do |post|
+			a_time = File.atime("post")
+			FileUtils.mv post, "#{source_dir}/#{stash_dir}/" unless post.include?(args.filename)
+		end
+	end
 	system "jekyll build"
 	cd "#{deploy_dir}" do
 		system "git pull"
