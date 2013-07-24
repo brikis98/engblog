@@ -6,7 +6,7 @@ projects_dir = "_projects"
 bios_dir = "_bios"
 stash_dir = "source/_stash"
 
-git_url = "git@github.com:thinkdeciduous/engblogsite.git"
+git_url = "git@github.com:thinkdeciduous/engblog.git"
 git_branch = "gh-pages"
 
 desc ""
