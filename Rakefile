@@ -9,11 +9,8 @@ bios_dir = "_bios"
 stash_dir = "source/_stash"
 
 git_url = "git@github.com:thinkdeciduous/engblog.git"
-<<<<<<< HEAD
-=======
-git_master = "master"
->>>>>>> 2bea70e64c8d1b352085631bca91ce84ec32eb6a
 git_branch = "gh-pages"
+git_master = "master"
 
 desc ""
 task :install do
