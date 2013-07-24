@@ -10,14 +10,15 @@ git_url = "git@github.com:thinkdeciduous/engblog.git"
 git_branch = "gh-pages"
 git_master = "master"
 
-desc ""
+desc "Install Jekyll and all it's dependencies."
 task :install do
 	begin
 		require "jekyll"
 		require "redcarpet"
 		require "launchy"
-		abort("Already installed all blog dependencies! run \"rake deploy\" if you have not already")
+		abort("Already installed all dependencies! Run \"rake deploy\" if you have not already to initialize the authoring environment")
 	rescue LoadError
+		puts "Installing Ruby dependencies..."
 		system "gem install jekyll"
 		system "gem install redcarpet"
 		system "gem install launchy"
@@ -25,9 +26,10 @@ task :install do
 	end
 end
 
-desc ""
+desc "Setup the git-pages deployment area and initialize the repo for blog commits"
 task :deploy do
-	abort("Blog environment has already been deployed!") if File.directory?(deploy_dir)	
+	abort("Blog environment has already been deployed!") if File.directory?(deploy_dir)
+	puts "Initializing authoring environment..."	
 	system "mkdir #{deploy_dir}"
 	cd "#{deploy_dir}" do
 		# this all needs to be changed once I get the LinkedIn repo setup
@@ -38,7 +40,7 @@ task :deploy do
 	end
 end
 
-desc "Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly."
+desc "Move all other posts than the one currently being worked on to a temporary stash location so regenerating the site happens much more quickly."
 task :isolate, :filename do |t, args|
   FileUtils.mkdir("#{source_dir}/#{stash_dir}/") unless File.exist?("#{source_dir}/#{stash_dir}/")
   Dir.glob("#{source_dir}/#{posts_dir}/*.*") do |post|
@@ -51,18 +53,14 @@ task :integrate do
   FileUtils.mv Dir.glob("#{source_dir}/#{stash_dir}/*.*"), "#{source_dir}/#{posts_dir}/"
 end
 
-desc ""
-task :generate do
+desc "Generate all static content with Jekyll and commit blog changes to github"
+task :push do
 	system "jekyll build"
 	cd "#{deploy_dir}" do
 		system "git pull"
 	end
 	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
 	cp_r "#{public_dir}/.", deploy_dir
-end
-
-desc ""
-task :commit do
 	cd "#{deploy_dir}" do
 		system "git add -A"
 		message = "Site updated at #{Time.now.utc}"
@@ -77,7 +75,7 @@ task :commit do
 	end
 end
 
-desc ""
+desc "Generate a temporary site and launch the Jekyll server"
 task :preview do 
 	require "launchy"
 	cd "#{deploy_dir}" do
