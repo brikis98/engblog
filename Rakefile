@@ -1,3 +1,5 @@
+require "process"
+
 public_dir = "public"
 source_dir = "source"
 deploy_dir = "_deploy"
@@ -7,6 +9,10 @@ bios_dir = "_bios"
 stash_dir = "source/_stash"
 
 git_url = "git@github.com:thinkdeciduous/engblog.git"
+<<<<<<< HEAD
+=======
+git_master = "master"
+>>>>>>> 2bea70e64c8d1b352085631bca91ce84ec32eb6a
 git_branch = "gh-pages"
 
 desc ""
@@ -18,6 +24,7 @@ task :install do
 	rescue LoadError
 		system "gem install jekyll"
 		system "gem install redcarpet"
+		system "mkdir public"
 	end
 end
 
@@ -53,13 +60,35 @@ task :generate do
 	cd "#{deploy_dir}" do
 		system "git pull"
 	end
-	(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
+	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
 	cp_r "#{public_dir}/.", deploy_dir
+end
+
+desc ""
+task :commit do
 	cd "#{deploy_dir}" do
-	  system "git add -A"
-	  message = "Site updated at #{Time.now.utc}"
-	  system "git commit -m \"#{message}\""
-	  system "git push origin #{git_branch}"
+		system "git add -A"
+		message = "Site updated at #{Time.now.utc}"
+		system "git commit -m \"#{message}\""
+		system "git push origin #{git_branch}"
+	end
+	cd "#{source_dir}/#{posts_dir}" do
+		system "git add -A"
+		message = "Source upodated at #{Time.now.utc}"
+		system "git commit -m \"#{message}\""
+		system "git push origin #{git_master}"
+	end
+end
+
+desc ""
+task :preview do 
+	cd "#{deploy_dir}" do
+		jekyllPid = Process.spawn("jekyll serve")
+		trap("INT") {
+			Process.kill(9, jekyllPid) rescue Errno::ESRCH
+			exit 0
+		}
+		Process.wait(jekyllPid)
 	end
 end
 
