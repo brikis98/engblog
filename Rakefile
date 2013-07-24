@@ -1,3 +1,5 @@
+require "process"
+
 public_dir = "public"
 source_dir = "source"
 deploy_dir = "_deploy"
@@ -57,6 +59,10 @@ task :generate do
 	end
 	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
 	cp_r "#{public_dir}/.", deploy_dir
+end
+
+desc ""
+task :commit do
 	cd "#{deploy_dir}" do
 		system "git add -A"
 		message = "Site updated at #{Time.now.utc}"
@@ -68,6 +74,18 @@ task :generate do
 		message = "Source upodated at #{Time.now.utc}"
 		system "git commit -m \"#{message}\""
 		system "git push origin #{git_master}"
+	end
+end
+
+desc ""
+task :preview do 
+	cd "#{deploy_dir}" do
+		jekyllPid = Process.spawn("jekyll serve")
+		trap("INT") {
+			Process.kill(9, jekyllPid) rescue Errno::ESRCH
+			exit 0
+		}
+		Process.wait(jekyllPid)
 	end
 end
 
