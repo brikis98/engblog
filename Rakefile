@@ -7,6 +7,7 @@ bios_dir = "_bios"
 stash_dir = "source/_stash"
 
 git_url = "git@github.com:thinkdeciduous/engblog.git"
+git_master = "master"
 git_branch = "gh-pages"
 
 desc ""
@@ -54,13 +55,19 @@ task :generate do
 	cd "#{deploy_dir}" do
 		system "git pull"
 	end
-	(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
+	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
 	cp_r "#{public_dir}/.", deploy_dir
 	cd "#{deploy_dir}" do
-	  system "git add -A"
-	  message = "Site updated at #{Time.now.utc}"
-	  system "git commit -m \"#{message}\""
-	  system "git push origin #{git_branch}"
+		system "git add -A"
+		message = "Site updated at #{Time.now.utc}"
+		system "git commit -m \"#{message}\""
+		system "git push origin #{git_branch}"
+	end
+	cd "#{source_dir}/#{posts_dir}" do
+		system "git add -A"
+		message = "Source upodated at #{Time.now.utc}"
+		system "git commit -m \"#{message}\""
+		system "git push origin #{git_master}"
 	end
 end
 
