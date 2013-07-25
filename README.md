@@ -1,4 +1,2 @@
 LinkedIn Engineering Blog
 =========================
-
-Test
