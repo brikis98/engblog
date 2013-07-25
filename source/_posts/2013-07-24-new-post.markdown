@@ -9,6 +9,7 @@ tags: "test code something"
 ---
 
 Just wanted to show off all that markdown, jekyll and git pages had to offer for this project.
+And added all this crazy shit mofo!
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
 
