@@ -15,6 +15,7 @@ dirs = [posts_dir, projects_dir, bios_dir]
 
 desc "Install Jekyll and all it's dependencies."
 task :install do
+	# check to see if dependencies are available, if not then download them and create the public folder
 	begin
 		require "jekyll"
 		require "redcarpet"
@@ -42,6 +43,7 @@ task :deploy do
 		system "git pull origin"
 		system "git checkout gh-pages"
 	end
+	#create the stash directory where files will be tracked for changes, used later to optimize jekyll build times
 	FileUtils.mkdir("#{source_dir}/#{stash_dir}") unless File.exist?("#{source_dir}/#{stash_dir}")
 	dirs.each do|dir|
 		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{dir}")
@@ -52,10 +54,10 @@ task :deploy do
 end
 
 desc "Generate all static content with Jekyll and commit blog changes to github"
-task :push, :override do |t, args|
-	IO.popen("git pull origin master") { |out| abort("Local repo and master are out of sync please make sure your environment is up to date!") if out.gets.contains("conflict") }
-	abort("Invalid option, use \"rake push --nocheck\" to override session checking") unless args.override == nil || args.override.downcase == "--nocheck"
-	
+task :push do 
+	#make sure the master branch is up to date
+	system "git pull origin master"
+	#check all files in the stash to see which files are new or have been modified, all unmodified files are removed so that only new or modified files are generated in a jekyll build
 	dirs.each do|dir|
 		Dir.glob("#{source_dir}/#{dir}/*") do |file|
 			if(File.file?("#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}") && FileUtils.compare_file(file, "#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}"))
@@ -66,13 +68,15 @@ task :push, :override do |t, args|
 		end
 	end
 	system "jekyll build"
-	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{posts_dir}/*"), "#{source_dir}/#{posts_dir}/"
-	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{projects_dir}/*"), "#{source_dir}/#{projects_dir}/"
-	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{bios_dir}/*"), "#{source_dir}/#{bios_dir}/"
+	#pull back in all unmodified files to keep everything synced up
+	dirs.each do|dir|
+		FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{dir}/*"), "#{source_dir}/#{dir}/"
+	end
+	#make sure the static content is up to date
 	cd "#{deploy_dir}" do
 		system "git pull origin gh-pages"
 	end
-	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
+	#pull in all new content
 	cp_r "#{public_dir}/.", deploy_dir
 	cd "#{deploy_dir}" do
 		system "git add -A"
@@ -80,6 +84,7 @@ task :push, :override do |t, args|
 		system "git commit -m \"#{message}\""
 		system "git push origin #{git_branch}"
 	end
+	#push all raw post markdown files into the master repo
 	cd "#{source_dir}/#{posts_dir}" do
 		system "git add -A"
 		message = "Source upodated at #{Time.now.utc}"
@@ -91,6 +96,7 @@ end
 desc "Generate a temporary site and launch the Jekyll server"
 task :preview do 
 	require "launchy"
+	#this is too much of a hack right now, need to 
 	cd "#{deploy_dir}" do
 		Thread.new do
 			sleep 4
