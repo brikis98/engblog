@@ -53,6 +53,7 @@ end
 
 desc "Generate all static content with Jekyll and commit blog changes to github"
 task :push, :override do |t, args|
+	IO.popen("git pull origin master") { |out| abort("Local repo and master are out of sync please make sure your environment is up to date!") if out.gets.contains("conflict") }
 	abort("Invalid option, use \"rake push --nocheck\" to override session checking") unless args.override == nil || args.override.downcase == "--nocheck"
 	
 	dirs.each do|dir|
