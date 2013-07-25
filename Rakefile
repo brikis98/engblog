@@ -11,6 +11,8 @@ git_branch = "gh-pages"
 git_master = "master"
 git_user = "thinkdeciduous"
 
+dirs = [posts_dir, projects_dir, bios_dir]
+
 desc "Install Jekyll and all it's dependencies."
 task :install do
 	begin
@@ -36,61 +38,36 @@ task :deploy do
 		# this all needs to be changed once I get the LinkedIn repo setup
 		system "git init"
 		system "git config user.name #{git_user}"
-		system "git config user."
 		system "git remote add origin #{git_url}"
 		system "git pull origin"
 		system "git checkout gh-pages"
+	end
+	FileUtils.mkdir("#{source_dir}/#{stash_dir}") unless File.exist?("#{source_dir}/#{stash_dir}")
+	dirs.each do|dir|
+		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{dir}")
+		FileUtils.cp Dir.glob("#{source_dir}/#{dir}/*"), "#{source_dir}/#{stash_dir}/#{dir}/"
 	end
 	puts "Building site (this could take a few minutes)..."
 	system "jekyll build"
 end
 
-desc ""
-task :checkin do
-	if File.exist?(".checkin")
-		abort("rake aborted!") if ask("You have already checked in for this session, would you like to terminate this session?", ['y', 'n']) == 'n'
-		system "rm .checkin"
-	end
-	puts "Checking in at #{Time.now.strftime('%Y-%m-%d %H:%M')}"
-	open(".checkin", 'w') do |file|
-	   file.puts("#{Time.now.to_i}")
-  	end
-end
-
-desc "Move all stashed posts back into the posts directory, ready for site generation."
-task :integrate do
-  FileUtils.mv Dir.glob("#{source_dir}/#{stash_dir}/*.*"), "#{source_dir}/#{posts_dir}/"
-end
-
 desc "Generate all static content with Jekyll and commit blog changes to github"
 task :push, :override do |t, args|
 	abort("Invalid option, use \"rake push --nocheck\" to override session checking") unless args.override == nil || args.override.downcase == "--nocheck"
-	if(args.override == nil)
-		abort("You have not checked in for this session! Please use \"rake checkin\" to check in or \"rake push nocheck\" to commit without checking in") unless File.exist?(".checkin")
-		FileUtils.mkdir("#{source_dir}/#{stash_dir}") unless File.exist?("#{source_dir}/#{stash_dir}")
-		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{posts_dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{posts_dir}")
-		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{projects_dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{projects_dir}")
-		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{bios_dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{bios_dir}")
-		ci_time = Time.at(File.read(".checkin").to_i).to_i
-		Dir.glob("#{source_dir}/#{posts_dir}/*.*") do |post|
-			a_time = File.atime(post).to_i
-			FileUtils.mv post, "#{source_dir}/#{stash_dir}/#{posts_dir}/" unless a_time > ci_time || post.include?(".meta")
+	
+	dirs.each do|dir|
+		Dir.glob("#{source_dir}/#{dir}/*") do |file|
+			if(File.file?("#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}") && FileUtils.compare_file(file, "#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}"))
+					File.delete(file)
+			else
+					FileUtils.cp file, "#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}"
+			end
 		end
-		Dir.glob("#{source_dir}/#{projects_dir}/*.*") do |post|
-			a_time = File.atime(post).to_i
-			FileUtils.mv post, "#{source_dir}/#{stash_dir}/#{projects_dir}/" unless a_time > ci_time || post.include?(".meta")
-		end
-		Dir.glob("#{source_dir}/#{bios_dir}/*.*") do |post|
-			a_time = File.atime(post).to_i
-			FileUtils.mv post, "#{source_dir}/#{stash_dir}/#{bios_dir}" unless a_time > ci_time || post.include?(".meta")
-		end
-		system "jekyll build"
-		FileUtils.mv Dir.glob("#{source_dir}/#{stash_dir}/#{posts_dir}/*.*"), "#{source_dir}/#{posts_dir}/"
-		FileUtils.mv Dir.glob("#{source_dir}/#{stash_dir}/#{projects_dir}/*.*"), "#{source_dir}/#{projects_dir}/"
-		FileUtils.mv Dir.glob("#{source_dir}/#{stash_dir}/#{bios_dir}/*.*"), "#{source_dir}/#{bios_dir}/"
-	else
-		system "jekyll build"
 	end
+	system "jekyll build"
+	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{posts_dir}/*"), "#{source_dir}/#{posts_dir}/"
+	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{projects_dir}/*"), "#{source_dir}/#{projects_dir}/"
+	FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{bios_dir}/*"), "#{source_dir}/#{bios_dir}/"
 	cd "#{deploy_dir}" do
 		system "git pull origin gh-pages"
 	end
@@ -124,4 +101,3 @@ task :preview do
 		rm_rf "_site"
 	end
 end
-
