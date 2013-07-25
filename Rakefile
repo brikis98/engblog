@@ -92,7 +92,7 @@ task :push, :override do |t, args|
 		system "jekyll build"
 	end
 	cd "#{deploy_dir}" do
-		system "git pull"
+		system "git pull origin gh-pages"
 	end
 	#(Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
 	cp_r "#{public_dir}/.", deploy_dir
