@@ -93,16 +93,35 @@ task :push do
 	end
 end
 
+task :test do 
+	v = ""
+	jekyllThread = Thread.new do 
+		IO.popen("jekyll serve") { |o| v = o.gets }
+	end
+	puts "Launching preview server"
+	until v.include? "WEBrick:HTTPServer#start" do
+		print "."
+		sleep 1
+	end
+	launchyThread = Thread.new do
+		puts "Opening preview site in browser..."
+		Launchy.open("http://localhost:4000")
+	end
+	while launchyThread.alive? do
+	end
+	jekyllThread.exit
+end
+
 desc "Generate a temporary site and launch the Jekyll server"
 task :preview do 
 	require "launchy"
 	#this is too much of a hack right now, need to 
 	cd "#{deploy_dir}" do
 		Thread.new do
-			sleep 4
 			puts "Opening preview site in browser..."
 			Launchy.open("http://localhost:4000")
 		end
+		
 		puts "Generating preview site..."
 		system "jekyll serve --watch"
 		rm_rf "_site"
