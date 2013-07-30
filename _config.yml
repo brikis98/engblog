@@ -1,7 +1,6 @@
 name: LinkedIn Engineering
 pygments: true
 markdown: redcarpet
-baseurl: /engblogtest
 paginate: 10
 source: source
 destination: public

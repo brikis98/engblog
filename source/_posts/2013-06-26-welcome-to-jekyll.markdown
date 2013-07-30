@@ -4,6 +4,8 @@ title:  "The first, and the best eng blog post!"
 date:   2013-06-26 14:09:36
 categories: LinkedIn
 contributer: Sony Mohaptra
+position: Something for someone
+description: this is just a little description of something you want to love
 image: sony%20mohapatra_0.png
 tags: "test code something"
 ---
