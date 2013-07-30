@@ -13,8 +13,51 @@
   margin-top: 7px;
 }
 
+.post-large h3 {
+	margin-top: 5px;
+}
+
+.post-small {
+	margin-bottom: 10px;
+}
+
+.post-small h4 {
+	margin-top: 0;
+}
+
 .large-post-img {
   border-radius: 7px;
   box-shadow: 0 0 8px #999;
-  width: 225px;
+  width: 100%;
+}
+
+.small-post-img {
+	border-radius: 5px;
+	box-shadow: 0 0 6px #999;
+	width: 100%;
+	vertical-align: center;
+}
+
+.large-project-img {
+	border-radius: 6px;
+	box-shadow: 0 0 7px #999;
+	width: 120px;
+}
+
+.small-team-img {
+	border-radius: 4px;
+	box-shadow: 0 0 5px #999;
+	width: 50px;
+}
+
+.btn-primary {
+	margin-top: 21px;
+}
+
+#posts, #projects, #teams {
+	margin-top: 40px;
+}
+
+#posts .tags {
+	margin-top: 8px;
 }

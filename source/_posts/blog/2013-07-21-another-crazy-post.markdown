@@ -2,7 +2,7 @@
 layout: post
 title:  "Intern Hackday III: Return of the Intern"
 date:   2013-07-01 14:09:36
-categories: LinkedIn
+categories: Post
 contributer: Kevin Scott
 position: Senior VP of engineering
 description: Every summer, our campus is renewed with the arrival of the incredible intern class. The energy is infectious, the frozen yogurt machine is quickly depleted, and passion is buzzing through the halls.

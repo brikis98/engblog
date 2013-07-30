@@ -1,0 +1,11 @@
+---
+layout: project
+title:  "Swarm"
+date:   2013-06-08 14:09:36
+categories: Project
+description: An eerily beautiful visualization of popular company search queries on LinkedIn.
+image: LabsIcon_swarm1.jpg?1295651353
+link: swarm.linkedinlabs.com
+---
+
+inMaps is a map, what else do you want?

@@ -1,0 +1,11 @@
+---
+layout: project
+title:  "Signal"
+date:   2013-06-31 14:09:36
+categories: Project
+description: Signal is aimed at making it easy for all professionals to glean the most relevant insights from the never-ending stream of status updates and news.
+image: LI_SignalLogo_120px.jpg?1286948623
+link: signal.linkedinlabs.com
+---
+
+inMaps is a map, what else do you want?

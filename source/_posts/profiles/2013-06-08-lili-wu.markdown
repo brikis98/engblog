@@ -1,0 +1,10 @@
+---
+date:   2013-06-08 14:09:36
+categories: Data
+name: Lili Wu
+position: Staff Software Engineer
+quote: I love our tech talks and reading groups. What a great company culture!
+image: embedded-images/lili.jpg#overlay-context=team
+---
+
+inMaps is a map, what else do you want?
