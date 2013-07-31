@@ -8,4 +8,12 @@ image: labicons_120px_inmap_2.jpg?1295651554
 link: inmaps.linkedinlabs.com
 ---
 
-inMaps is a map, what else do you want?
+A LinkedIn map is an interactive visual representation of your professional universe, based on the relationships between your connections
+
+###The Challenge
+
+We use information about how people in your network are connected to you and each other to create your personalized map. Groups like colleagues, people you went to school with, or friends are separated into color-coded clusters, as people within these groups are also interconnected with each other.
+
+>Visualize your professional network, clustered in realtime based on their inter-relationships.
+
+With your inMap, you can visually understand how to better leverage your professional network to help pass along job opportunities, seek professional advice, or gather insights.

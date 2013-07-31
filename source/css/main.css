@@ -49,6 +49,11 @@ body {
   margin-top: 7px;
 }
 
+.navigation li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .hero-banner {
 	display: block;
 	margin: -90px auto 0 auto;
@@ -111,6 +116,12 @@ body {
 	width: 100%;
 }
 
+.small-project-img {
+  border-radius: 4px;
+  box-shadow: 0 0 5px #999;
+  width: 100%;
+}
+
 .small-team-img {
 	border-radius: 4px;
 	box-shadow: 0 0 5px #999;
@@ -118,7 +129,7 @@ body {
 }
 
 .btn-primary {
-	margin-top: 21px;
+	margin-top: 15px;
 }
 
 #posts, #projects, #team, #tweet, #video {
@@ -154,11 +165,11 @@ body {
   margin-bottom: 20px;
 }
 
-.project-row a {
+.project-row h3 a {
 	color:#000;
 }
 
-.project-row a:hover {
+.project-row h3 a:hover {
 	color: #428BCA;
 	text-decoration: none;
 }
@@ -170,6 +181,18 @@ body {
 .quote {
   width: 20px;
   margin: 0 3px 0 0;
+}
+
+.small-icon {
+  width: 15px;
+  margin-right: 6px;
+  margin-bottom: 2px;
+}
+
+blockquote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  color: #474949;
 }
 
 .tweet {
@@ -199,8 +222,35 @@ body {
   text-decoration: none;
 }
 
+.item-list li{
+  padding: 10px 10px 0;
+  box-shadow: 0 0 4px #999;
+  border-radius: 5px;
+}
+
+.item-list li .lead {
+  margin-bottom: 12px;
+}
+
+.item-list li a.lead {
+  color: #000;
+}
+
+.item-list li a.lead:hover {
+  color: #428BCA;
+  text-decoration: none;
+}
+
 .bottom-margin {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.bottom-margin-med {
+  margin-top: 50px;
+}
+
+.bottom-margin-lg {
+  margin-top: 80px;
 }
 
 .top-margin {
@@ -217,4 +267,8 @@ body {
 
 .top-border {
 	border-top: 1px solid #EAEAEA;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #EAEAEA;
 }

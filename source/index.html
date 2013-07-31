@@ -10,14 +10,14 @@ title: LinkedIn Engineering Blog
   </div>
   <div id="posts-description" class="row">
     <div class="col-lg-7">
-      <h3 class="text-muted">Our engineers are encouraged to share what they're working on along with tips on technology they're using</h3>
+      <p class="lead text-muted well-small">Our engineers are encouraged to share what they're working on along with tips on technology they're using</p>
     </div>
     <div class="col-lg-4 col-offset-1">
-      <button type="button" class="btn btn-primary btn-large btn-block">View all blog posts</button>
+       <a href="{{ site.baseurl }}posts.html"><button type="button" class="btn btn-primary btn-large btn-block">View all blog posts</button></a>
     </div>
   </div>
   <div id="posts" class="row">
-  {% for post in site.categories.post limit:3 %}  
+  {% for post in site.categories.post limit:6 %}  
       {% if forloop.first %}
         <div class="col-lg-7">
           <div class="row post-large">
@@ -35,7 +35,7 @@ title: LinkedIn Engineering Blog
                 {{ post.description }}
               </p>
               <a href="{{ post.url }}">
-                <button type="button" class="btn btn-default">Read the full post</button>
+               <button type="button" class="btn btn-default">Read the full post</button>
               </a>
             </div>
           </div>
@@ -68,7 +68,7 @@ title: LinkedIn Engineering Blog
               </div>
               <div class="col-lg-10">
                 <h4>          
-                  <a href="{{ post.url }}"><strong>{{ post.title }}</strong></a>
+                  <a href="{{ post.url }}"><strong>{{ post.title | truncate:40 }}</strong></a>
                 </h4>
                 <p class="text-muted">
                   Posted by <strong>{{ post.contributer }}</strong> on {{ post.date | date_to_string }}
@@ -95,10 +95,10 @@ title: LinkedIn Engineering Blog
   </div>
   <div id="projects-description" class="row">
     <div class="col-lg-7">
-      <h3 class="text-muted">To get a sense of the diversity of projects that LinkedIn engineers work on, here's a sample</h3>
+      <p class="lead text-muted well-small">To get a sense of the diversity of projects that LinkedIn engineers work on, here's a sample</p>
     </div>
     <div class="col-lg-4 col-offset-1">
-      <button type="button" class="btn btn-primary btn-large btn-block">View all projects</button>
+      <a href="{{ site.baseurl }}projects.html"><button type="button" class="btn btn-primary btn-large btn-block">View all projects</button></a>
     </div>
   </div>
   <div id="projects" class="row">
@@ -117,7 +117,7 @@ title: LinkedIn Engineering Blog
                 </div>
                 <div class="col-lg-8">
                   <h3>
-                    <strong><a href="{{ project.url }}">{{ project.title }}</a></strong>
+                    <a href="{{ project.url }}">{{ project.title }}</a>
                   </h3>
                   <p>
                     {{ project.description }}
@@ -153,7 +153,7 @@ title: LinkedIn Engineering Blog
   </div>
   <div id="team-description" class="row">
     <div class="col-lg-7">
-      <h3 class="text-muted">Meet the talented engineers who are behind some of the best projects and cutting-edge systems on the web</h3>
+      <p class="lead text-muted well-small">Meet the talented engineers who are behind some of the best projects and cutting-edge systems on the web</p>
     </div>
     <div class="col-lg-4 col-offset-1">
       <button type="button" class="btn btn-primary btn-large btn-block">Working at LinkedIn</button>
@@ -166,7 +166,7 @@ title: LinkedIn Engineering Blog
           <h3>
             <strong>Applications</strong>
           </h3>
-          <p>
+          <p class="well-small">
             We're proud of our distributed Java applications capable of serving billions of page views of over 175 million LinkedIn members across browsers, iPads, iPhones, Android and Blackberry phones.
           </p>
         </div>
@@ -208,7 +208,7 @@ title: LinkedIn Engineering Blog
           <h3>
             <strong>Data Analysis and Machine Learning</strong>
           </h3>
-          <p>
+          <p class="well-small">
             Our applied research engineers and scientists work on highly scalable, highly performant social graph engines, state-of-the-art full-text search engines and platforms for applied data analytics
           </p>
         </div>

@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="content">
+	<div class="row top-margin-lg">
+		<div class="col-lg-8">
+			<h1>LinkedIn Engineering Blog</h1>
+			<ul class="list-unstyled item-list top-margin-med well-small">
+			{% for post in site.categories.post %}
+					<li class="bottom-margin">
+						<div class="row">
+							<div class="col-lg-2">
+								<img class="small-post-img" alt="{{ post.contributer }}" src="http://engineering.linkedin.com/sites/default/files/{{ post.image }}" />
+							</div>
+							<div class="col-lg-9">
+								<p class="bottom-border">
+									<a class="lead" href="{{ post.url }}">{{ post.title }}</a>
+								</p>
+								<p>
+									<small>{{ post.content | truncate:80 }}</small>
+								</p>
+								<p class="text-muted">
+									<small>Posted by <strong>{{ post.contributer }}</strong> on {{ post.date | date_to_string }}</small>
+				                </p> 
+						    </div>
+						</div>
+					</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
