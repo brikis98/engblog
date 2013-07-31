@@ -12,6 +12,8 @@
 #   https://github.com/scottwb/jekyll-tweet-tag/blob/master/README.md
 #
 require 'json'
+require 'digest'
+require 'net/http'
 
 module Jekyll
   class TweetTag < Liquid::Tag
@@ -48,7 +50,7 @@ module Jekyll
       if response = cached_response(api_params) || live_response(api_params)
         body = response['html'] || response['error'] || body
       end
-      "<div class='embed tweet'>#{body}</div>"
+      "<div class='embed tweet'><img class='bird' scr='images/tweet.png'/>#{body}</div>"
     end
 
     def cache(api_params, data)

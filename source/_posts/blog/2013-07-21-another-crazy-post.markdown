@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Intern Hackday III: Return of the Intern"
-date:   2013-07-01 14:09:36
+date:   2013-07-21 14:09:36
 categories: Post
 contributer: Kevin Scott
 position: Senior VP of engineering
