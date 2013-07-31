@@ -1,9 +1,59 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
-
-<div class="post">
-{{ content }}
+<div class="content top-margin-lg">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="row post-details">
+				<div class="col-lg-12">
+					<h2>
+						<strong>{{ page.title }}</strong>
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8">
+					<p class="text-muted lead">
+						{{ page.description }}
+					</p>
+				</div>
+				<div class="col-lg-4">
+					<a href="http://{{ page.link }}"><button type="button" class="btn btn-primary btn-large btn-block">View this project</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="post-content well-small top-margin">
+						{{ content }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="row top-margin-lg">
+				<div class="col-lg-12">
+					<div class="well well-large">
+						<h4 class="bottom-margin">
+							<strong>Other LinkedIn Projects</strong>
+						</h4>
+						{% for project in site.categories.project limit:4 %}
+							<div class="bottom-margin">
+								<h5>{{ project.title }}</h5>
+								<p class="text-muted"> 
+									<small>{{ project.description }}</small>
+								</p>
+								<a href="http://{{ project.link }}">
+									<small>{{ project.link }}</small>
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
 </div>

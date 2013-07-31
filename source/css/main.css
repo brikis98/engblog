@@ -14,7 +14,8 @@ body {
 .header {
   background-color: #474949;
   margin: 0;
-  padding: 30px 30px 45px 30px;
+  padding: 30px 30px 0 30px;
+  height: 200px;
 }
 
 .header a {
@@ -25,9 +26,17 @@ body {
   text-decoration: none;
 }
 
-#logo {
+#header-logo {
   width: 200px;
   margin: -15px 0 10px 0;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+#footer-logo {
+	width: 100%;
 }
 
 .logo-text {
@@ -36,8 +45,14 @@ body {
   margin-left: 10px;
 }
 
-#nav {
+.navigation {
   margin-top: 7px;
+}
+
+.hero-banner {
+	display: block;
+	margin: -90px auto 0 auto;
+	box-shadow: 0 0 18px #474949;
 }
 
 .post-large h3 {
@@ -59,6 +74,14 @@ body {
 .post-small a:hover {
   color: #428BCA;
   text-decoration:none;
+}
+
+.post-details p {
+	margin: 40px 0 5px 0;
+}
+
+.post-details h2 {
+	margin-top: 0;
 }
 
 .team-small {
@@ -131,6 +154,15 @@ body {
   margin-bottom: 20px;
 }
 
+.project-row a {
+	color:#000;
+}
+
+.project-row a:hover {
+	color: #428BCA;
+	text-decoration: none;
+}
+
 .serif {
   font-family: Georgia, "Times New Roman";
 }
@@ -169,4 +201,20 @@ body {
 
 .bottom-margin {
   margin-bottom: 30px;
+}
+
+.top-margin {
+	margin-top: 20px;
+}
+
+.top-margin-med {
+  margin-top: 50px;
+}
+
+.top-margin-lg {
+	margin-top: 80px;
+}
+
+.top-border {
+	border-top: 1px solid #EAEAEA;
 }

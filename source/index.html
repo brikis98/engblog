@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Your New Jekyll Site
+title: LinkedIn Engineering Blog
 ---
 <div class="content">
   <div id="posts-title" class="row">
@@ -34,7 +34,7 @@ title: Your New Jekyll Site
               <p>
                 {{ post.description }}
               </p>
-              <a href="{{ site.baseurl }}/{{ post.url }}">
+              <a href="{{ post.url }}">
                 <button type="button" class="btn btn-default">Read the full post</button>
               </a>
             </div>
@@ -53,7 +53,7 @@ title: Your New Jekyll Site
                 <strong>Tagged with: </strong>
               </h4>
               {% for tag in post.tags %}
-                <a class="btn btn-default btn-small" href="{{ site.baseurl }}/tags/{{ tag }}">{{ tag }}</a>
+                <a class="btn btn-default btn-small" href="/tag/{{ tag }}">{{ tag }}</a>
               {% endfor %}
             </div>
           </div>
@@ -68,7 +68,7 @@ title: Your New Jekyll Site
               </div>
               <div class="col-lg-10">
                 <h4>          
-                  <a href="{{ site.baseurl }}/{{ post.url }}"><strong>{{ post.title }}</strong></a>
+                  <a href="{{ post.url }}"><strong>{{ post.title }}</strong></a>
                 </h4>
                 <p class="text-muted">
                   Posted by <strong>{{ post.contributer }}</strong> on {{ post.date | date_to_string }}
@@ -111,13 +111,13 @@ title: Your New Jekyll Site
           <div class="col-lg-6">
               <div class="row">
                 <div class="col-lg-4">
-                  <a href="http://{{ project.link }}">
+                  <a href="{{ project.url }}">
                     <img class="large-project-img" alt="{{ project.title }}" src="//engineering.linkedin.com/linkedinlabs/images/{{ project.image }}" />
                   </a>
                 </div>
                 <div class="col-lg-8">
                   <h3>
-                    <strong>{{ project.title }}</strong>
+                    <strong><a href="{{ project.url }}">{{ project.title }}</a></strong>
                   </h3>
                   <p>
                     {{ project.description }}

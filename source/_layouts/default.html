@@ -7,11 +7,11 @@
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="css/syntax.css">
+        <link rel="stylesheet" href="/css/syntax.css">
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
         <div class="container">
@@ -19,12 +19,12 @@
             <div class="row header">
               <div class="col-lg-5">
                 <a href="{{ site.baseurl }}">
-                    <img id="logo" alt="LinkedIn" src="/images/logo.png">
+                    <img id="header-logo" alt="LinkedIn" src="/images/logo.png">
                     <h2 class="logo-text">Engineering</h2>
                 </a>
               </div>
               <div class="col-lg-7">
-                <ul id="nav" class="list-inline pull-right">
+                <ul class="navigation list-inline pull-right">
                   <li><h3><a href="{{ site.baseurl }}">Blog</a></h3></li>
                   <li><h3>Projects</h3></li>
                   <li><h3>Jobs</h3></li>
@@ -33,8 +33,46 @@
                 </ul>
               </div>
             </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <img class="hero-banner" src="/images/hero.jpeg" />
+              </div>
+            </div>
                 {{ content }}
-            <div class="footer">
+            <div class="content bottom-margin">
+              <div class="row footer top-border">
+                <div class="col-lg-1 top-margin">
+                  <img id="footer-logo" src="/images/icon.png" />
+                </div>
+                <div class="col-lg-10 top-margin">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <ul class="text-muted list-inline navigation">
+                        <li>Help Center</li>
+                        <li>About</li>
+                        <li>Blog</li>
+                        <li>Careers</li>
+                        <li>Advertising</li>
+                        <li>Recruiting Solutions</li>
+                        <li>Tools</li>
+                        <li>Mobile</li>
+                        <li>Developers</li>
+                        <li>Publishers</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <ul class="text-muted list-inline">
+                        <li><strong>2013, LinkedIn Corporation &copy;</strong></li>
+                        <li>User Agreement</li>
+                        <li>Privacy Policy</li>
+                        <li>Copyright Policy</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div> <!-- /container -->
