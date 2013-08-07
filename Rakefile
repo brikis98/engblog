@@ -1,9 +1,9 @@
 public_dir = "public"
 source_dir = "source"
 deploy_dir = "_deploy"
-posts_dir = "_posts"
-projects_dir = "_projects"
-bios_dir = "_bios"
+posts_dir = "blog"
+projects_dir = "projects"
+bios_dir = "teams"
 stash_dir = "_stash"
 
 git_url = "git@github.com:thinkdeciduous/engblog.git"
@@ -47,7 +47,7 @@ task :deploy do
 	FileUtils.mkdir("#{source_dir}/#{stash_dir}") unless File.exist?("#{source_dir}/#{stash_dir}")
 	dirs.each do|dir|
 		FileUtils.mkdir("#{source_dir}/#{stash_dir}/#{dir}") unless File.exist?("#{source_dir}/#{stash_dir}/#{dir}")
-		FileUtils.cp Dir.glob("#{source_dir}/#{dir}/*"), "#{source_dir}/#{stash_dir}/#{dir}/"
+		FileUtils.cp Dir.glob("#{source_dir}/_posts/#{dir}/*"), "#{source_dir}/#{stash_dir}/#{dir}/"
 	end
 	puts "Building site (this could take a few minutes)..."
 	system "jekyll build"
@@ -59,7 +59,7 @@ task :push do
 	system "git pull origin master"
 	#check all files in the stash to see which files are new or have been modified, all unmodified files are removed so that only new or modified files are generated in a jekyll build
 	dirs.each do|dir|
-		Dir.glob("#{source_dir}/#{dir}/*") do |file|
+		Dir.glob("#{source_dir}/_posts/#{dir}/*") do |file|
 			if(File.file?("#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}") && FileUtils.compare_file(file, "#{source_dir}/#{stash_dir}/#{dir}/#{File.basename(file)}"))
 					File.delete(file)
 			else
@@ -70,7 +70,7 @@ task :push do
 	system "jekyll build"
 	#pull back in all unmodified files to keep everything synced up
 	dirs.each do|dir|
-		FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{dir}/*"), "#{source_dir}/#{dir}/"
+		FileUtils.cp Dir.glob("#{source_dir}/#{stash_dir}/#{dir}/*"), "#{source_dir}/_posts/#{dir}/"
 	end
 	#make sure the static content is up to date
 	cd "#{deploy_dir}" do
