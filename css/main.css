@@ -1,165 +1,274 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
-
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html, body { height: 100%; }
-
 body {
-  background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
-  font-size: small;
-  text-align: center;
+  
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
-
-h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
-
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
-
-table {
-  font-size: inherit;
-  font: 100%;
+.container {
+  background-color: #fff;
+  box-shadow: 0 0 25px #999;
 }
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
+.content {
+  padding: 0 30px;
 }
 
-ul.posts li {
-  line-height: 1.75em;
+.header {
+  background-color: #474949;
+  margin: 0;
+  padding: 30px 30px 0 30px;
+  height: 200px;
 }
 
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+.header a {
+  color: #fff;
 }
 
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.site {
-  font-size: 115%;
-  text-align: justify;
-  width: 42em;
-  margin: 3em auto 2em;
-  line-height: 1.5em;
-}
-
-.site .header a {
-  font-weight: bold;
+.header a:hover {
   text-decoration: none;
 }
 
-.site .header h1.title {
+#header-logo {
+  width: 200px;
+  margin: -15px 0 10px 0;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+#footer-logo {
+	width: 100%;
+}
+
+.logo-text {
   display: inline-block;
-  margin-bottom: 2em;
+  color: #fff;
+  margin-left: 10px;
 }
 
-.site .header h1.title a {
-  color: #a00;
+.navigation {
+  margin-top: 7px;
 }
 
-.site .header h1.title a:hover {
+.navigation li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.hero-banner {
+	display: block;
+	margin: -90px auto 0 auto;
+	box-shadow: 0 0 18px #474949;
+}
+
+.post-large h3 {
+	margin-top: 5px;
+}
+
+.post-small {
+	margin-bottom: 10px;
+}
+
+.post-small h4 {
+	margin-top: 0;
+}
+
+.post-small a {
   color: #000;
 }
 
-.site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
+.post-small a:hover {
+  color: #428BCA;
+  text-decoration:none;
 }
 
-.site .header a.extra:hover {
-  color: #000;
+.post-details p {
+	margin: 40px 0 5px 0;
 }
 
-.site .meta {
-  color: #aaa;
+.post-details h2 {
+	margin-top: 0;
 }
 
-.site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
+.team-small {
+  margin-top: 7px;
 }
 
-.site .footer .contact {
-  float: left;
-  margin-right: 3em;
+.team-small h4 {
+  margin-top: 0;
 }
 
-.site .footer .contact a {
-  color: #8085C1;
+.large-post-img {
+  border-radius: 7px;
+  box-shadow: 0 0 8px #999;
+  width: 100%;
 }
 
-.site .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
+.small-post-img {
+	border-radius: 5px;
+	box-shadow: 0 0 6px #999;
+	width: 100%;
+	vertical-align: center;
 }
 
-.site .footer .rss img {
-  border: 0;
+.large-project-img {
+	border-radius: 6px;
+	box-shadow: 0 0 7px #999;
+	width: 100%;
 }
 
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
+.small-project-img {
+  border-radius: 4px;
+  box-shadow: 0 0 5px #999;
+  width: 100%;
 }
 
-.post ul, .post ol {
-  margin-left: 1.35em;
+.small-team-img {
+	border-radius: 4px;
+	box-shadow: 0 0 5px #999;
+	width: 100%;
 }
 
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
+.btn-primary {
+	margin-top: 15px;
 }
 
-.post pre code {
+#posts, #projects, #team, #tweet, #video {
+	margin-top: 70px;
+}
+
+#posts-title, #projects-title, #team-title {
+  margin-top: 40px;
+}
+
+#tweet {
+  background-color: #428BCA;
+}
+
+#video-img {
+  width: 100%;
+}
+
+#posts .tags {
+	margin-top: 8px;
+}
+
+.table-wrap {
+  display: table;
+}
+
+.vert-mid {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.project-row {
+  margin-bottom: 20px;
+}
+
+.project-row h3 a {
+	color:#000;
+}
+
+.project-row h3 a:hover {
+	color: #428BCA;
+	text-decoration: none;
+}
+
+.serif {
+  font-family: Georgia, "Times New Roman";
+}
+
+.quote {
+  width: 20px;
+  margin: 0 3px 0 0;
+}
+
+.small-icon {
+  width: 15px;
+  margin-right: 6px;
+  margin-bottom: 2px;
+}
+
+blockquote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  color: #474949;
+}
+
+.tweet {
+  width: 400px;
+  margin: 50px auto;
+}
+
+.tweet blockquote {
   border: none;
 }
 
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
+.tweet blockquote p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #222;
 }
 
-.post pre.terminal code {
-  background-color: #333;
+.tweet blockquote p a {
+  color: #85bfef;
+  font-weight: 700;
+}
+
+.tweet blockquote p a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.item-list li{
+  padding: 10px 10px 0;
+  box-shadow: 0 0 4px #999;
+  border-radius: 5px;
+}
+
+.item-list li .lead {
+  margin-bottom: 12px;
+}
+
+.item-list li a.lead {
+  color: #000;
+}
+
+.item-list li a.lead:hover {
+  color: #428BCA;
+  text-decoration: none;
+}
+
+.bottom-margin {
+  margin-bottom: 20px;
+}
+
+.bottom-margin-med {
+  margin-top: 50px;
+}
+
+.bottom-margin-lg {
+  margin-top: 80px;
+}
+
+.top-margin {
+	margin-top: 20px;
+}
+
+.top-margin-med {
+  margin-top: 50px;
+}
+
+.top-margin-lg {
+	margin-top: 80px;
+}
+
+.top-border {
+	border-top: 1px solid #EAEAEA;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #EAEAEA;
 }
