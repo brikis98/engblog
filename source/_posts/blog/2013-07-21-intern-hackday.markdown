@@ -8,7 +8,10 @@ position: Senior VP of engineering
 description: Every summer, our campus is renewed with the arrival of the incredible intern class. The energy is infectious, the frozen yogurt machine is quickly depleted, and passion is buzzing through the halls.
 image: Kevin%20Scott.jpg
 link: linkedin.com/in/jkevinscott
-tags: "interns hackday 2013"
+tags: 
+ - interns 
+ - hackday 
+ - 2013
 ---
 
 Every summer, our campus is renewed with the arrival of the incredible intern class. The energy is infectious, the frozen yogurt machine is quickly depleted, and passion is buzzing through the halls. They come from different parts of the world and they all have one thing in common – they want to make cool things. And that’s exactly what they will be doing all summer at LinkedIn.

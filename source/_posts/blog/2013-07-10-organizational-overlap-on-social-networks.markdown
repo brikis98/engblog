@@ -8,7 +8,11 @@ position: Staff Engineer and Tech Lead
 description: Online social networks have become important tools for networking, communication, sharing, and discovery.
 image: 1d77323_0.jpg
 link: linkedin.com/in/mitultiwari
-tags: "'Social Network Analysis' 'Link Prediction' 'Data Mining' 2013"
+tags: 
+ - Social Network Analysis 
+ - Link Prediction 
+ - Data Mining 
+ - 2013
 ---
 
 Online social networks have become important tools for networking, communication, sharing, and discovery. A considerable challenge these networks face is the fact that an online social network is partially observed: two individuals might know each other, but may not have established a connection on the site.

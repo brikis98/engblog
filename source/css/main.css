@@ -222,6 +222,13 @@ blockquote {
   text-decoration: none;
 }
 
+.tweet .bird {
+  width: 50px;
+  float: left;
+  margin-top: 5px;
+
+}
+
 .item-list li{
   padding: 10px 10px 0;
   box-shadow: 0 0 4px #999;

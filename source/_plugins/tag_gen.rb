@@ -9,8 +9,8 @@ module Jekyll
 
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      self.data['title'] = "Posts Tagged &ldquo;"+tag+"&rdquo;"
+      self.data['tag'] = tag.to_s
+      self.data['title'] = "Posts Tagged &ldquo;"+tag.to_s+"&rdquo;"
     end
   end
 
@@ -21,13 +21,13 @@ module Jekyll
       if site.layouts.key? 'tag_index'
         dir = 'tag'
         site.tags.keys.each do |tag|
-          write_tag_index(site, File.join(dir, tag), tag)
+          write_tag_index(site, File.join(dir, tag.to_s), tag.to_s)
         end
       end
     end
   
     def write_tag_index(site, dir, tag)
-      index = TagIndex.new(site, site.source, dir, tag)
+      index = TagIndex.new(site, site.source, dir, tag.to_s)
       index.render(site.layouts, site.site_payload)
       index.write(site.dest)
       site.pages << index

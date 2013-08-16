@@ -8,7 +8,10 @@ position: Senior Test Engineer
 description: At LinkedIn, we believe in designing products that offer great value to our members, shipping those products quickly, and doing it all without compromising on quality.
 image: sony%20mohapatra_0.png
 link: linkedin.com/in/sonymohapatra
-tags: "test code something"
+tags: 
+ - test 
+ - code 
+ - something
 ---
 
 At LinkedIn, we believe in designing products that offer great value to our members, shipping those products quickly, and doing it all without compromising on quality. In this post, I'll describe the testing methodology that makes this all possible.

@@ -3,7 +3,7 @@ source_dir = "source"
 deploy_dir = "_deploy"
 posts_dir = "blog"
 projects_dir = "projects"
-bios_dir = "teams"
+teams_dir = "teams"
 stash_dir = "_stash"
 
 git_url = "git@github.com:thinkdeciduous/engblog.git"
@@ -11,7 +11,7 @@ git_branch = "gh-pages"
 git_master = "master"
 git_user = "thinkdeciduous"
 
-dirs = [posts_dir, projects_dir, bios_dir]
+dirs = [posts_dir, projects_dir, teams_dir]
 
 desc "Install Jekyll and all it's dependencies."
 task :install do
@@ -85,11 +85,13 @@ task :push do
 		system "git push origin #{git_branch}"
 	end
 	#push all raw post markdown files into the master repo
-	cd "#{source_dir}/#{posts_dir}" do
-		system "git add -A"
-		message = "Source upodated at #{Time.now.utc}"
-		system "git commit -m \"#{message}\""
-		system "git push origin #{git_master}"
+	dirs.each do|dir|
+		cd "#{source_dir}/_posts/#{dir}" do
+			system "git add -A"
+			message = "Source updated at #{Time.now.utc}"
+			system "git commit -m \"#{message}\""
+			system "git push origin #{git_master}"
+		end
 	end
 end
 
