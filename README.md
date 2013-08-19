@@ -13,12 +13,12 @@ Steps:
 * install [Ruby](http://www.ruby-lang.org/en/downloads/) 
 * install the Rake gem
 * clone the repo
-* run 'rake install' to set up the dependencies (use sudo if you do not have superuser access)
-* run 'rake deploy' to set up the environment (could take some time to build if there are a lot of posts)
+* run **'rake install'** to set up the dependencies (use sudo if you do not have superuser access)
+* run **'rake deploy'** to set up the environment (could take some time to build if there are a lot of posts)
 
 Once your environment is set up it is time to start blogging!
 
-###Blogging practices
+###Blogging
 
 There are three types of posts for the blog, and these are:
 
@@ -39,8 +39,9 @@ Steps for making a post:
 * Write your post
 * Save it into the **'source/_drafts/'** folder (it'll stay here until it's approved)
 * Continue writing as many posts as you want
-* Commit the post(s) with 'rake push'
+* Commit the post(s) with **'rake push'**
 
-
+In order to move blog posts from draft to production, simply alter the name putting today's date (YYYY-MM-DD) in front
+of the title. Then move it into the appropriate folder within **'source/_posts'**
 
 
