@@ -22,9 +22,9 @@ Once your environment is set up it is time to start blogging!
 
 There are three types of posts for the blog, and these are:
 
-* posts
-* projects
-* team members
+* Posts
+* Projects
+* Team Members
   * Applications
   * Data Analysis
   * Systems and Infrastructure
@@ -32,6 +32,14 @@ There are three types of posts for the blog, and these are:
 Each of these posts can be created by using the templates provided in their respective folders located in the 
 **'source/posts'** directory. There are also several template variations of each template available, each with different 
 layouts for different purposes.
+
+Steps for making a post:
+* Make a copy of the template, naming it with the title of your post (hyphen separated).
+* Edit the YAML variables with your information (make sure to fill in everything)
+* Write your post
+* Save it into the **'source/_drafts/'** folder (it'll stay here until it's approved)
+* Continue writing as many posts as you want
+* Commit the post(s) with 'rake push'
 
 
 
