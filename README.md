@@ -29,9 +29,9 @@ There are three types of posts for the blog, and these are:
   * Data Analysis
   * Systems and Infrastructure
 
-Each of these posts can be created by using the templates provided in their respective folders located in the 
-**'source/posts'** directory. There are also several template variations of each template available, each with different 
-layouts for different purposes.
+Each of these posts can be created by using the templates located in the **'source/_drafts/templates'** directory. 
+There are also several template variations of each template available, each with different layouts for different 
+purposes.
 
 Steps for making a post:
 * Make a copy of the template, naming it with the title of your post (hyphen separated).
