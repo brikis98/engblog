@@ -14,8 +14,6 @@ tags:
  - something
 ---
 
-At LinkedIn, we believe in designing products that offer great value to our members, shipping those products quickly, and doing it all without compromising on quality. In this post, I'll describe the testing methodology that makes this all possible.
-
 ###The Team
 
 A typical test team at LinkedIn includes product managers, development engineers, software engineers in test, and quality engineers. We have a dedicated team of engineers that rotate weekly and whose only job that week is to fix and close bugs.
