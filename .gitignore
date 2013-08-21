@@ -1,3 +1,4 @@
 public/
 _deploy/
 source/_stash/
+.DS_store
