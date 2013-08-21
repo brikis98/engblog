@@ -8,7 +8,7 @@ layout: default
 			<h2>
 				<strong>{{page.title}}</strong>
 			</h2>
-			<dl class="top-margin top-border well-small">
+			<dl class="top-margin-sm top-border well-small">
 				{% for post in site.posts %}
 					{% for tag in post.tags %}
 						{% capture tag_string %}{{ tag }}{% endcapture %}
@@ -18,9 +18,9 @@ layout: default
 						</dt>
 						<dd>
 							<time class="text-muted" datetime='{{post.date | date: "%Y-%m-%d"}}'>{{post.date | date: "%m/%e/%y"}}</time>
-							<ul class="bottom-margin list-inline well-small">
+							<ul class="bottom-margin-sm list-inline well-small">
 								{% for tag in post.tags %}
-								<li class="top-margin">
+								<li class="top-margin-sm">
 									<a class="btn btn-default btn-small" href="/tag/{{ tag }}">{{ tag }}</a>
 								</li>
 								{% endfor %}

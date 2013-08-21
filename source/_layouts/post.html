@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-<div class="content top-margin">
+<div class="content top-margin-sm">
 	<div class="row">
-		<div class="col-lg-8">
+		<div class="col-8">
 			<div class="row post-details">
-				<div class="col-lg-12">
+				<div class="col-12">
 					<p class="text-muted lead">
 						{{ page.date | date_to_string }}
 					</p>
@@ -14,11 +14,11 @@ layout: default
 					</h2>
 				</div>
 			</div>
-			<div class="row top-margin">
-				<div class="col-lg-2">
+			<div class="row top-margin-sm">
+				<div class="col-2">
 					<img class="small-post-img pull-right" src="http://engineering.linkedin.com/sites/default/files/{{ page.image }}" />
 				</div>
-				<div class="col-lg-6">
+				<div class="col-6">
 					<h4 class="text-muted">
 						<strong>{{ page.contributer }}</strong>, <em>{{ page.position }}</em>
 					</h4>
@@ -28,16 +28,16 @@ layout: default
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-12">
-					<div class="post-content well-small top-margin">
+				<div class="col-12">
+					<div class="post-content well-small top-margin-sm">
 						{{ content }}
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-4">
 			<div class="row top-margin-lg">
-				<div class="col-lg-12">
+				<div class="col-12">
 						<p class="text-muted"> Tags for this post: </p>
 					{% for tag in page.tags %}
 	                	<a class="btn btn-default btn-small" href="/tag/{{ tag }}">{{ tag }}</a>

@@ -17,22 +17,25 @@ desc "Install Jekyll and all it's dependencies."
 task :install do
 	# check to see if dependencies are available, if not then download them and create the public folder
 	begin
+		require "rubygems"
 		require "jekyll"
 		require "redcarpet"
 		require "launchy"
+		require "twitter"
 		abort("Already installed all dependencies! Run \"rake deploy\" if you have not already to initialize the authoring environment")
 	rescue LoadError
 		puts "Installing Ruby dependencies..."
 		system "gem install jekyll"
 		system "gem install redcarpet"
 		system "gem install launchy"
+		system "gem install twitter"
 		system "mkdir public"
 	end
 end
 
 desc "Setup the git-pages deployment area and initialize the repo for blog commits"
 task :deploy do
-	abort("Blog environment has already been deployed!") if File.directory?(deploy_dir)
+	abort("Blog environment has already been deployed! You are ready to start blogging.") if File.directory?(deploy_dir)
 	puts "Initializing authoring environment..."	
 	system "mkdir #{deploy_dir}"
 	cd "#{deploy_dir}" do
@@ -97,6 +100,7 @@ end
 
 desc "Generate a temporary site and launch the Jekyll server"
 task :preview do 
+	require "rubygems"
 	require "launchy"
 	out = ""
 	go = false
@@ -108,7 +112,7 @@ task :preview do
 		puts "Opening preview site in browser..."
 		Launchy.open("http://localhost:4000")
 	end
-	IO.popen("jekyll serve") { |pipe| 
+	IO.popen("jekyll serve --drafts") { |pipe| 
 		until out.include? "Generating... done." do
 		 	out = pipe.gets
 		end 

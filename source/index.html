@@ -4,27 +4,27 @@ title: LinkedIn Engineering Blog
 ---
 <div class="content">
   <div id="posts-title" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <h1>LinkedIn Engineering Blog</h1>
     </div>
   </div>
   <div id="posts-description" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <p class="lead text-muted well-small">Our engineers are encouraged to share what they're working on along with tips on technology they're using</p>
     </div>
-    <div class="col-lg-4 col-offset-1">
+    <div class="col-4 col-offset-1">
        <a href="{{ site.baseurl }}posts.html"><button type="button" class="btn btn-primary btn-large btn-block">View all blog posts</button></a>
     </div>
   </div>
   <div id="posts" class="row">
   {% for post in site.categories.post limit:6 %}  
       {% if forloop.first %}
-        <div class="col-lg-7">
+        <div class="col-7">
           <div class="row post-large">
-            <div class="col-lg-5">
+            <div class="col-5">
               <img class="large-post-img" src="http://engineering.linkedin.com/sites/default/files/{{ post.image }}" />
             </div>
-            <div class="col-lg-7">
+            <div class="col-7">
                <h4 class="text-muted">
                {{ post.date | date_to_string }}
               </h4> 
@@ -40,7 +40,7 @@ title: LinkedIn Engineering Blog
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-5">
+            <div class="col-5">
               <h3>
                 <strong>{{ post.contributer }}</strong>
               </h3>
@@ -48,7 +48,7 @@ title: LinkedIn Engineering Blog
                 <em>{{ post.position }}</em>
               </h4>
             </div>
-            <div class="col-lg-7 tags">
+            <div class="col-7 tags">
               <h4>
                 <strong>Tagged with: </strong>
               </h4>
@@ -60,13 +60,13 @@ title: LinkedIn Engineering Blog
         </div>
       {% else %}
         {% if forloop.index == 2 %}
-          <div class="col-lg-5" >
+          <div class="col-5" >
         {% endif %}
             <div class="row post-small">
-              <div class="col-lg-2">
+              <div class="col-2">
                 <img class="small-post-img" src="http://engineering.linkedin.com/sites/default/files/{{ post.image }}" />
               </div>
-              <div class="col-lg-10">
+              <div class="col-10">
                 <h4>          
                   <a href="{{ post.url }}"><strong>{{ post.title | truncate:40 }}</strong></a>
                 </h4>
@@ -83,39 +83,39 @@ title: LinkedIn Engineering Blog
   </div>
 </div>
 <div id="video" class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       <img id="video-img" src="images/video.jpg" />
     </div>
 </div>
 <div class="content">
   <div id="projects-title" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <h1>Internal &amp; Open Source Projects</h1>
     </div>
   </div>
   <div id="projects-description" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <p class="lead text-muted well-small">To get a sense of the diversity of projects that LinkedIn engineers work on, here's a sample</p>
     </div>
-    <div class="col-lg-4 col-offset-1">
+    <div class="col-4 col-offset-1">
       <a href="{{ site.baseurl }}projects.html"><button type="button" class="btn btn-primary btn-large btn-block">View all projects</button></a>
     </div>
   </div>
   <div id="projects" class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       {% for project in site.categories.project limit:4 %}
         {% assign row = forloop.index | modulo:2 %}
         {% if row > 0 %}
           <div class="row project-row">
         {% endif %}
-          <div class="col-lg-6">
+          <div class="col-6">
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-4">
                   <a href="{{ project.url }}">
                     <img class="large-project-img" alt="{{ project.title }}" src="//engineering.linkedin.com/linkedinlabs/images/{{ project.image }}" />
                   </a>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-8">
                   <h3>
                     <a href="{{ project.url }}">{{ project.title }}</a>
                   </h3>
@@ -137,7 +137,7 @@ title: LinkedIn Engineering Blog
 </div>
 <div id="tweet">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
        {% tweet https://twitter.com/linkedineng/statuses/360094082711822336 align='center' omit_script='true' %} 
     </div>
   </div>
@@ -147,22 +147,22 @@ title: LinkedIn Engineering Blog
 </div>
 <div class="content">
   <div id="team-title" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <h1>The LinkedIn Engineering Team</h1>
     </div>
   </div>
   <div id="team-description" class="row">
-    <div class="col-lg-7">
+    <div class="col-7">
       <p class="lead text-muted well-small">Meet the talented engineers who are behind some of the best projects and cutting-edge systems on the web</p>
     </div>
-    <div class="col-lg-4 col-offset-1">
+    <div class="col-4 col-offset-1">
       <button type="button" class="btn btn-primary btn-large btn-block">Working at LinkedIn</button>
     </div>
   </div>
   <div id="team" class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-6">
           <h3>
             <strong>Applications</strong>
           </h3>
@@ -173,8 +173,8 @@ title: LinkedIn Engineering Blog
       </div>
       <div class="row">
         {% for member in site.categories.applications limit:3 %}
-          <div class="col-lg-4">
-            <div class="col-lg-12">
+          <div class="col-4">
+            <div class="col-12">
               <h4 class="text-muted serif">
                 <em><img class="quote" src="/images/quote.jpg"/>{{ member.quote }}</em>
               </h4>
@@ -182,14 +182,14 @@ title: LinkedIn Engineering Blog
           </div>
         {% endfor %}
       </div>
-      <div class="row bottom-margin">
+      <div class="row bottom-margin-sm">
         {% for member in site.categories.applications limit:3 %}
-          <div class="col-lg-4 team-small">
-            <div class="col-lg-3">
+          <div class="col-4 team-small">
+            <div class="col-3">
                 <img class="small-team-img" alt="{{ member.name }}" src="//engineering.linkedin.com/sites/default/files/{{ member.image }}" />
               </a>
             </div>
-            <div class="col-lg-9">
+            <div class="col-9">
               <h4>
                 <strong>{{ member.name }}</strong>
               </h4>
@@ -204,7 +204,7 @@ title: LinkedIn Engineering Blog
         {% endfor %}
       </div>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-6">
           <h3>
             <strong>Data Analysis and Machine Learning</strong>
           </h3>
@@ -215,8 +215,8 @@ title: LinkedIn Engineering Blog
       </div>
       <div class="row">
         {% for member in site.categories.data limit:3 %}
-          <div class="col-lg-4">
-            <div class="col-lg-12">
+          <div class="col-4">
+            <div class="col-12">
               <h4 class="text-muted serif">
                 <em><img class="quote" src="/images/quote.jpg"/>{{ member.quote }}</em>
               </h4>
@@ -224,14 +224,14 @@ title: LinkedIn Engineering Blog
           </div>
         {% endfor %}
       </div>
-      <div class="row bottom-margin">
+      <div class="row bottom-margin-sm">
         {% for member in site.categories.data limit:3 %}
-          <div class="col-lg-4 team-small">
-            <div class="col-lg-3">
+          <div class="col-4 team-small">
+            <div class="col-3">
                 <img class="small-team-img" alt="{{ member.name }}" src="//engineering.linkedin.com/sites/default/files/{{ member.image }}" />
               </a>
             </div>
-            <div class="col-lg-9">
+            <div class="col-9">
               <h4>
                 <strong>{{ member.name }}</strong>
               </h4>

@@ -14,6 +14,7 @@
 require 'json'
 require 'digest'
 require 'net/http'
+require 'tweetstream'
 
 module Jekyll
   class TweetTag < Liquid::Tag
@@ -41,7 +42,6 @@ module Jekyll
           api_params[k] = v
         end
       end
-
       html_output_for(api_params)
     end
 
